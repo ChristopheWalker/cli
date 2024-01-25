@@ -1,30 +1,61 @@
-Some!examples!of using C++/CLI ， Implement C# call C++ 
+# 🦜️🔗 LangChain Go
 
-[在线文档](https://blog.csdn.net/aoshilang2249/category_9271302.html)
+[![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white&style=flat-square)](https://pkg.go.dev/github.com/tmc/langchaingo)
+[![scorecard](https://goreportcard.com/badge/github.com/tmc/langchaingo)](https://goreportcard.com/report/github.com/tmc/langchaingo)
+[![](https://dcbadge.vercel.app/api/server/2NgDkQDjpQ?compact=true&style=flat)](https://discord.gg/2NgDkQDjpQ)
+[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/tmc/langchaingo)
+[<img src="https://github.com/codespaces/badge.svg" title="Open in Github Codespace" width="150" height="20">](https://codespaces.new/tmc/langchaingo)
 
-#### 包含内容
-- [C++/CLI signing snk文件强命名](https://blog.csdn.net/aoshilang2249/article/details/46712541)
+⚡ Building applications with LLMs through composability, with Go! ⚡
 
-- [C++/CLI 托管C++的托管与非托管字符串的相互转换](https://blog.csdn.net/aoshilang2249/article/details/37819165)
+## 🤔 What is this?
 
-- [C++/CLI 托管C++的数据类型介绍](https://blog.csdn.net/aoshilang2249/article/details/42317367)
+This is the Go language implementation of LangChain.
 
-- [C++/CLI 托管C++的基本数据类型及函数](https://blog.csdn.net/aoshilang2249/article/details/42317395)
+## 📖 Documentation
 
-- [C++/CLI 托管C++的数组介绍](https://blog.csdn.net/aoshilang2249/article/details/42317463)
+- [Documentation Site](https://tmc.github.io/langchaingo/docs/)
+- [API Reference](https://pkg.go.dev/github.com/tmc/langchaingo)
 
-- [C++/CLI 托管C++之字符串封装](https://blog.csdn.net/aoshilang2249/article/details/42319213)
 
-- [C++/CLI 托管C++之enum枚举封装](https://blog.csdn.net/aoshilang2249/article/details/42319313)
+## 🎉 Examples
 
-- [C++/CLI 托管C++之类、属性封装](https://blog.csdn.net/aoshilang2249/article/details/42319371)
+See [./examples](./examples) for example usage.
 
-- [C++/CLI 托管C++之结构体封装](https://blog.csdn.net/aoshilang2249/article/details/42319423)
+```go
+package main
 
-- [C++/CLI 托管C++之结构体封装(内存对齐#pragma pack)](https://blog.csdn.net/aoshilang2249/article/details/42319579)
+import (
+	"context"
+	"log"
 
-- [C++/CLI 托管C++之联合体union封装](https://blog.csdn.net/aoshilang2249/article/details/42319663)
+	"github.com/tmc/langchaingo/llms/openai"
+)
 
-- [C++/CLI 托管C++之导出注释](https://blog.csdn.net/aoshilang2249/article/details/42319783)
+func main() {
+	llm, err := openai.New()
+	if err != nil {
+		log.Fatal(err)
+	}
+	prompt := "What would be a good company name for a company that makes colorful socks?"
+	completion, err := llm.Call(context.Background(), prompt)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Println(completion)
+}
+```
 
- 
+```shell
+$ go run .
+
+Socktastic!
+```
+
+# Resources
+
+Here are some links to blog posts and articles on using Langchain Go:
+
+- [Using Ollama with LangChainGo](https://eli.thegreenplace.net/2023/using-ollama-with-langchaingo/) - Nov 2023
+- [Creating a simple ChatGPT clone with Go](https://sausheong.com/creating-a-simple-chatgpt-clone-with-go-c40b4bec9267?sk=53a2bcf4ce3b0cfae1a4c26897c0deb0) - Aug 2023
+- [Creating a ChatGPT Clone that Runs on Your Laptop with Go](https://sausheong.com/creating-a-chatgpt-clone-that-runs-on-your-laptop-with-go-bf9d41f1cf88?sk=05dc67b60fdac6effb1aca84dd2d654e) - Aug 2023
